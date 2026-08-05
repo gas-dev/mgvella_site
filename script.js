@@ -15,6 +15,19 @@ if (menuButton && nav) {
   });
 }
 
+const heroImage = document.querySelector('.hero-visual img');
+const profileImage = document.querySelector('.approach-image img');
+if (heroImage) {
+  heroImage.addEventListener('error', function () {
+    heroImage.src = 'assets/hero-placeholder.svg';
+  });
+}
+if (profileImage) {
+  profileImage.addEventListener('error', function () {
+    profileImage.src = 'assets/profile-placeholder.svg';
+  });
+}
+
 const observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
