@@ -15,24 +15,6 @@ if (menuButton && nav) {
   });
 }
 
-const heroImage = document.querySelector('.hero-visual img');
-const profileImage = document.querySelector('.approach-image img');
-
-async function loadEncodedImage(element, source, fallback) {
-  if (!element) return;
-  try {
-    const response = await fetch(source, { cache: 'no-store' });
-    if (!response.ok) throw new Error('Image data unavailable');
-    const encoded = (await response.text()).trim();
-    element.src = `data:image/jpeg;base64,${encoded}`;
-  } catch (error) {
-    element.src = fallback;
-  }
-}
-
-loadEncodedImage(heroImage, 'assets/mary-grace-city.txt', 'assets/hero-placeholder.svg');
-loadEncodedImage(profileImage, 'assets/mary-grace-office.txt', 'assets/profile-placeholder.svg');
-
 const observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
