@@ -22,11 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Prepare optimized web portraits
+      - name: Prepare hero portrait
         run: |
-          python -m pip install --quiet Pillow
           cat \
             assets/hero-parts/part0.txt \
             assets/hero-parts/part01.txt \
@@ -38,23 +37,6 @@ jobs:
             assets/hero-parts/part07.txt \
             assets/hero-parts/part08.txt \
             | base64 --decode > assets/mary-grace-city.webp
-          base64 --decode assets/mary-grace-office.txt > /tmp/mary-grace-office-source
-          python - <<'PY'
-          from PIL import Image
-
-          hero = Image.open('assets/mary-grace-city.webp')
-          hero.verify()
-
-          office = Image.open('/tmp/mary-grace-office-source').convert('RGB')
-          if office.width > 720:
-              height = round(office.height * 720 / office.width)
-              office = office.resize((720, height), Image.Resampling.LANCZOS)
-          office.save('assets/mary-grace-office.webp', 'WEBP', quality=84, method=6)
-
-          office_check = Image.open('assets/mary-grace-office.webp')
-          office_check.verify()
-          print('Hero and office portraits verified successfully')
-          PY
           rm -rf assets/hero-parts
           rm -f assets/mary-grace-city.txt assets/mary-grace-office.txt assets/mary-grace-city-webp.b64 assets/.image-build-note
 
