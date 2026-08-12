@@ -15,6 +15,11 @@ if (menuButton && nav) {
   });
 }
 
+const heroImage = document.querySelector('.hero-visual img');
+const profileImage = document.querySelector('.approach-image img');
+if (heroImage) heroImage.src = 'assets/mary-grace-city.webp';
+if (profileImage) profileImage.src = 'assets/mary-grace-office.webp';
+
 const observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
