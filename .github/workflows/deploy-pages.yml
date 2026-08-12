@@ -23,12 +23,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Prepare optimized web portraits
+        run: |
+          python -m pip install --quiet Pillow
+          base64 --decode assets/mary-grace-city.txt > /tmp/mary-grace-city-source
+          base64 --decode assets/mary-grace-office.txt > /tmp/mary-grace-office-source
+          python - <<'PY'
+          from PIL import Image
+
+          hero = Image.open('/tmp/mary-grace-city-source').convert('RGB')
+          if hero.width > 960:
+              height = round(hero.height * 960 / hero.width)
+              hero = hero.resize((960, height), Image.Resampling.LANCZOS)
+          hero.save('assets/mary-grace-city.webp', 'WEBP', quality=82, method=6)
+
+          office = Image.open('/tmp/mary-grace-office-source').convert('RGB')
+          if office.width > 720:
+              height = round(office.height * 720 / office.width)
+              office = office.resize((720, height), Image.Resampling.LANCZOS)
+          office.save('assets/mary-grace-office.webp', 'WEBP', quality=84, method=6)
+          PY
+          rm -f assets/mary-grace-city.txt assets/mary-grace-office.txt
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
+
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
