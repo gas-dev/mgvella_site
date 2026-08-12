@@ -51,9 +51,13 @@ jobs:
             assets/approach-hq/part01.txt \
             assets/approach-hq/part02.txt \
             assets/approach-hq/part03.txt \
-            assets/approach-hq/part04.txt \
+            assets/approach-hq/part04a.txt \
+            assets/approach-hq/part04b.txt \
             assets/approach-hq/part05.txt \
-            assets/approach-hq/part06.txt \
+            assets/approach-hq/part06a.txt \
+            assets/approach-hq/part06b1.txt \
+            assets/approach-hq/part06b2a.txt \
+            assets/approach-hq/part06b2b.txt \
             assets/approach-hq/part07.txt \
             | base64 --decode > assets/mary-grace-approach-hq.webp
 
