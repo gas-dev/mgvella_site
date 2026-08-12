@@ -30,8 +30,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Prepare hero portrait
+      - name: Build and verify web portraits
         run: |
+          set -euo pipefail
+
           cat \
             assets/hero-parts/part0.txt \
             assets/hero-parts/part01.txt \
@@ -43,8 +45,37 @@ jobs:
             assets/hero-parts/part07.txt \
             assets/hero-parts/part08.txt \
             | base64 --decode > assets/mary-grace-city.webp
-          rm -rf assets/hero-parts
-          rm -f assets/mary-grace-city.txt assets/mary-grace-office.txt assets/mary-grace-city-webp.b64 assets/.image-build-note
+
+          cat \
+            assets/approach-hq/part00.txt \
+            assets/approach-hq/part01.txt \
+            assets/approach-hq/part02.txt \
+            assets/approach-hq/part03.txt \
+            assets/approach-hq/part04.txt \
+            assets/approach-hq/part05.txt \
+            assets/approach-hq/part06.txt \
+            assets/approach-hq/part07.txt \
+            | base64 --decode > assets/mary-grace-approach-hq.webp
+
+          echo "a166472495cb765f4a0145b297b6cf8a19230ec1ee2f00d56d1039e794227364  assets/mary-grace-approach-hq.webp" | sha256sum -c -
+          test "$(stat -c%s assets/mary-grace-approach-hq.webp)" -eq 67110
+          file assets/mary-grace-approach-hq.webp | grep -qi 'Web/P image'
+
+          sed -i 's#assets/mary-grace-office-final.jpg#assets/mary-grace-approach-hq.webp#g' index.html
+          sed -i 's#width="320" height="277"#width="1122" height="1402"#g' index.html
+
+          rm -rf assets/hero-parts assets/approach-hq
+          rm -f \
+            assets/mary-grace-city.txt \
+            assets/mary-grace-office.txt \
+            assets/mary-grace-city-webp.b64 \
+            assets/.image-build-note \
+            assets/mary-grace-office-final.jpg \
+            assets/mary-grace-office.jpg \
+            assets/mary-grace-office.webp \
+            assets/mary-grace-office-v2.jpg \
+            assets/mary-grace-office-600.b64 \
+            assets/office-tiny.b64
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
