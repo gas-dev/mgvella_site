@@ -21,6 +21,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Fix Git certificate bundle
+        run: |
+          sudo update-ca-certificates
+          git config --global http.sslCAInfo /etc/ssl/certs/ca-certificates.crt
+          git config --global http.sslVerify true
+
       - name: Checkout
         uses: actions/checkout@v5
 
