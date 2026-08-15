@@ -29,7 +29,7 @@
         <p class="eyebrow">Malta · Europe · International</p>
         <h1>Legal clarity for the businesses <em>shaping modern finance.</em></h1>
         <p class="hero-intro">Strategic legal and regulatory counsel for payment institutions, electronic money institutions, banks, fintech companies and financial technology providers.</p>
-        <div class="hero-actions"><a class="button" href="#contact">Discuss a matter</a><a class="text-link" href="#expertise">Explore our expertise <span>↘</span></a></div>
+        <div class="hero-actions"><a class="button contact-trigger" href="#contact">Discuss a matter</a><a class="text-link" href="#expertise">Explore our expertise <span>↘</span></a></div>
       </div>
       <div class="hero-visual reveal delay-1">
         <img src="assets/mary-grace-city.webp" alt="Mary Grace Vella in a European city at night">
@@ -73,7 +73,7 @@
         <p class="profile-lead">Mary Grace Vella advises on financial services law, corporate governance, regulatory compliance, payment services, electronic money and anti-money laundering.</p>
         <p>Her experience combines independent legal practice with direct exposure to the governance and AML functions of a regulated electronic money institution. This gives her a practical understanding of the legal, supervisory and operational issues faced by regulated firms.</p>
         <div class="credentials"><div><strong>Doctor of Laws</strong><span>University of Malta</span></div><div><strong>Master of Arts in Financial Services</strong><span>University of Malta</span></div><div><strong>Independent practice since 2016</strong><span>Malta</span></div></div>
-        <a class="text-link light" href="#contact">Contact Mary Grace <span>↘</span></a>
+        <a class="text-link light contact-trigger" href="#contact">Contact Mary Grace <span>↘</span></a>
       </div>
     </section>
 
@@ -90,12 +90,31 @@
     </section>
 
     <section class="contact" id="contact">
-      <div class="contact-copy reveal"><p class="eyebrow">Start a conversation</p><h2>Tell us what needs to move forward.</h2><p>For licensing, regulatory, transactional or contentious financial services matters, contact Mary Grace directly.</p></div>
-      <form class="contact-form reveal delay-1" onsubmit="return false"><label>Name<input type="text" name="name" autocomplete="name" placeholder="Your name"></label><label>Email<input type="email" name="email" autocomplete="email" placeholder="you@company.com"></label><label>Organisation<input type="text" name="company" autocomplete="organization" placeholder="Company or institution"></label><label>How can we help?<textarea name="message" rows="4" placeholder="Briefly describe the matter"></textarea></label><button class="button" type="submit">Send enquiry</button><p class="form-note">Contact details, privacy wording and the form processing endpoint will be added before publication.</p></form>
+      <div class="contact-copy reveal"><p class="eyebrow">Start a conversation</p><h2>Tell us how we can help.</h2><p>Send a short message. Mary Grace will receive it directly and, during the testing period, a copy will also be sent to the technical test address.</p></div>
+      <form class="contact-form reveal delay-1" action="https://formsubmit.co/dr.marygracevella@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New contact request from MGV Legal website">
+        <input type="hidden" name="_cc" value="germano.arno@gmail.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://gas-dev.github.io/mgvella_site/?sent=1#contact">
+        <input type="text" name="_honey" class="bot-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-grid-two">
+          <label><span class="field-label">First name</span><input type="text" name="first_name" autocomplete="given-name" minlength="2" maxlength="80" required placeholder="First name"></label>
+          <label><span class="field-label">Last name</span><input type="text" name="last_name" autocomplete="family-name" minlength="2" maxlength="80" required placeholder="Last name"></label>
+        </div>
+        <div class="form-grid-two">
+          <label><span class="field-label">Email</span><input type="email" name="email" autocomplete="email" maxlength="160" required placeholder="you@company.com"></label>
+          <label><span class="field-label">Telephone</span><input type="tel" name="telephone" autocomplete="tel" inputmode="tel" minlength="6" maxlength="25" pattern="[0-9+() .-]{6,25}" required placeholder="+356 ..."></label>
+        </div>
+        <label><span class="field-label">Reason for contact</span><textarea name="message" rows="4" minlength="10" maxlength="1500" required placeholder="Briefly describe the matter"></textarea></label>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <button class="button" type="submit">Send enquiry</button>
+        <p class="form-note">Protected by reCAPTCHA and anti-spam controls. Please do not include highly sensitive or confidential information in this first message.</p>
+      </form>
     </section>
   </main>
 
-  <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">V</span><span><strong>MGV</strong><small>LEGAL</small></span></a><div class="footer-meta"><span>Financial Services · Regulatory · Disputes</span><span>Malta · International</span></div><div class="footer-links"><a href="#">LinkedIn</a><a href="#">Privacy</a><a href="#">Legal notice</a></div><p>© <span id="year"></span> MGV Legal. All rights reserved.</p></footer>
+  <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">V</span><span><strong>MGV</strong><small>LEGAL</small></span></a><div class="footer-meta"><span>Financial Services · Regulatory · Disputes</span><span>Malta · International</span></div><div class="footer-links"><a class="contact-trigger" href="#contact">Contact</a><a href="#">LinkedIn</a><a href="#">Privacy</a><a href="#">Legal notice</a></div><p>© <span id="year"></span> MGV Legal. All rights reserved.</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
