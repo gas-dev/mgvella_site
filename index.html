@@ -19,7 +19,7 @@
     <a class="brand" href="#top" aria-label="MGV Legal home"><span class="brand-mark">V</span><span><strong>MGV</strong><small>LEGAL</small></span></a>
     <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Primary navigation">
-      <a href="#expertise">Expertise</a><a href="#approach">Approach</a><a href="#profile">Mary Grace Vella</a><a href="#insights">Insights</a><a class="nav-contact" href="#contact">Contact</a>
+      <a href="#expertise">Expertise</a><a href="#approach">Approach</a><a href="#profile">Mary Grace Vella</a><a href="#insights">Insights</a><a class="nav-contact contact-trigger" href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -91,13 +91,12 @@
 
     <section class="contact" id="contact">
       <div class="contact-copy reveal"><p class="eyebrow">Start a conversation</p><h2>Tell us how we can help.</h2><p>Send a short message. Mary Grace will receive it directly and, during the testing period, a copy will also be sent to the technical test address.</p></div>
-      <form class="contact-form reveal delay-1" action="https://formsubmit.co/dr.marygracevella@gmail.com" method="POST" novalidate>
+      <form class="contact-form reveal delay-1" action="https://formsubmit.co/dr.marygracevella@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New contact request from MGV Legal website">
         <input type="hidden" name="_cc" value="germano.arno@gmail.com">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://gas-dev.github.io/mgvella_site/?sent=1#contact">
         <input type="text" name="_honey" class="bot-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
-
         <div class="form-grid-two">
           <label><span class="field-label">First name</span><input type="text" name="first_name" autocomplete="given-name" minlength="2" maxlength="80" required placeholder="First name"></label>
           <label><span class="field-label">Last name</span><input type="text" name="last_name" autocomplete="family-name" minlength="2" maxlength="80" required placeholder="Last name"></label>
@@ -116,5 +115,6 @@
 
   <footer><a class="brand footer-brand" href="#top"><span class="brand-mark">V</span><span><strong>MGV</strong><small>LEGAL</small></span></a><div class="footer-meta"><span>Financial Services · Regulatory · Disputes</span><span>Malta · International</span></div><div class="footer-links"><a class="contact-trigger" href="#contact">Contact</a><a href="#">LinkedIn</a><a href="#">Privacy</a><a href="#">Legal notice</a></div><p>© <span id="year"></span> MGV Legal. All rights reserved.</p></footer>
   <script src="script.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>
